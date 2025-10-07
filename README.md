@@ -41,7 +41,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
    <ul> 
      <li>Set the network interface card private IP address to static to prevent changing IP</li>
      <li>log in via Remote Desktop</li>
-     <li> Disable Windows Firewall to be able to test connectivity</li>
+     <li>Disable Windows Firewall to be able to test connectivity</li>
    </ul>
  <h4>Client-1 Configuration</h4>
    <ul>
@@ -56,21 +56,43 @@ This setup establishes the network foundation required for Active Directory depl
     <li>DNS resolution is correctly configured</li>
     <li>Internal routing between VMs functions as expected</li>
 </ul>
-This step validates Azure network configuration before installing and promoting DC-1 as the domain controller.
 <br />
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<p>
-
-</p>
+ <h4>Install Active Directory Domain Services</h4>
+   <ul> 
+     <li>In DC-1 Install Active Directory Domain Services via Server Manager</li>
+     <li>Promote DC-1 as a Domain Controller by creating a new forest, then restart after completion</li>
+     <li>Log back using domain credentals: [createddomain.com]\[username]</li>
+   </ul>
+    <h4>Create a Domain Admin User</h4>
+   <ul> 
+     <li>Open Active Directory Users and Computers</li>
+     <li>Create an Organizational Unit emplpoyees; holds the users created</li>
+     <li>Create another OU for admins, holds all admins with access</li>
+     <li>Create a new admin and assign it to the Domain Admins security group</li>
+     <li>Log out and reconnect to DC-1 as the assigned admin going forward</li>
+   </ul>
+    
 <br />
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<p>
+ <h4>Join Client-1 to the Domain</h4>
+   <ul>
+       <li>Log in as local admin and join Client-1 to the domain.</li>
+       <li>Restart, log into DC-1 and open AD Users and Computers to verify CLient-1 appears under the domain</li>
+     <li>Create new OU for clients and move Client-1 into it for organization.</li>
+   </ul>
 
-</p>
+   <h4><i>What We Achieved</i></h4>
+This lab establishes the core Active Directory domain structure and demonstrates practical domain management by: 
+<ul>
+    <li>Deploying a Domain Controller and creating a functioning forest.</li>
+    <li>Implementing a privelaged Domain Admin account for secure administration.</li>
+    <li>Successfully joining a client workstation to the domain, confirming network and authentication integrity.</li>
+</ul>
 <br />
