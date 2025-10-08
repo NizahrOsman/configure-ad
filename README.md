@@ -34,7 +34,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
   In this step, I setup the foundational environment in Microsoft Azure to prepare for deploying Active Directory services.</p>
    <p>Two seperate virtual machines are created inside the same virtual network and subnet: 
 <ul>
-  <li>DC-1: Windows Server (Domain Controller .</li>
+  <li>DC-1: Windows Server (Domain Controller)</li>
   <li>Client-1: Windows 10 (used to connect to the domain)</li> 
 </ul>
  <h4>DC-1 Configuration</h4>
